@@ -1,14 +1,21 @@
+import { Button, Container, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { styles } from "./HomePagesStyle";
 
 const HomePages = () => {
-    return ( 
-        <div>
-           HomePages
-           <Link to="/">
-               <h5>Back</h5>
-           </Link> 
-        </div>
-     );
-}
- 
+  return (
+    <Container maxWidth="lg" component="main">
+      <Typography variant="h4" component="h1" align="center">
+        HomePages
+      </Typography>
+
+      <Link to="/">
+        <Button variant="contained" sx={styles.button}>
+          Back
+        </Button>
+      </Link>
+    </Container>
+  );
+};
+
 export default HomePages;
