@@ -7,14 +7,16 @@ import {
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { ShoppingCart } from "@mui/icons-material";
+import { StyledLink, StyledSpan, styles } from "./HeaderStyle";
+import { green } from "@mui/material/colors";
 import { Link } from "react-router-dom";
-import { styles } from "./HeaderStyle";
 
 const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={styles.header}>
-        <Toolbar>
+        <Toolbar sx={styles.toolbar}>
           <IconButton
             size="large"
             edge="start"
@@ -24,16 +26,20 @@ const Header = () => {
           >
             <MenuIcon />
           </IconButton>
-          
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            <Link to={'/home'}>Home</Link>
+
+          <Typography variant="h5" component="div" sx={styles.link}>
+            <StyledLink to={"/home"}>Home</StyledLink>
+            <StyledLink to={"/posts"}>Posts</StyledLink>
+            <StyledLink to={"/add"}>Add Posts</StyledLink>
+            <StyledLink to={"/cart"}>Cart</StyledLink>
           </Typography>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            <Link to={"/posts"}>Posts</Link>
+          <Typography component="div" sx={styles.cartIcon} >
+            <Link to={"/cart"}>
+              <ShoppingCart sx={{ ml: 5, color: green[600] }} />
+              <StyledSpan>2</StyledSpan>
+            </Link>
           </Typography>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            <Link to={"/cart"}>Cart</Link>
-          </Typography>
+
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
