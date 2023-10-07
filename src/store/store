@@ -1,0 +1,19 @@
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import { productsApi } from "./productsApi";
+import { productsReducer } from "./productsSlice";
+import { getProducts } from "./thunks";
+
+const store = configureStore({
+  reducer: {
+    cart: productsReducer,
+    [productsApi.reducerPath]: productsApi.reducer,
+
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(productsApi.middleware),
+  },
+});
+store.dispatch(getProducts());
+setupListeners(store.dispatch);
+
+export default store;
