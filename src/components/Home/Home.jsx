@@ -6,11 +6,19 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../store/cartSlice";
 import { useGetAllProductsQuery } from "../../store/productsApi";
 import { styles } from "./HomeStyle";
 
 const Home = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
+  const dispatchFunc = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatchFunc(addItem(product));
+  };
+
   return (
     <>
       {isLoading ? (
@@ -37,9 +45,11 @@ const Home = () => {
                 />
                 <CardContent>
                   <span>{product.desc}</span>
-                  <Typography component="div" sx={styles.price}>${product.price}</Typography>
+                  <Typography component="div" sx={styles.price}>
+                    ${product.price}
+                  </Typography>
                 </CardContent>
-                <Button>Add to cart</Button>
+                <Button onClick={() => handleAddToCart(product)}>Add to cart</Button>
               </Card>
             ))}
           </Box>
