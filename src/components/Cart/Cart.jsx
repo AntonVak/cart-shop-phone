@@ -1,8 +1,11 @@
+import CartTable from "./CartTable";
+
+
 
 const Cart = () => {
   return (
     <>
-      <h3>Cart</h3>
+      <CartTable/>
     </>
   )
 };
