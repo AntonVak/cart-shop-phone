@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getProducts = createAsyncThunk(
-  "products/getProducts",
+  "home/getProducts",
   async (_, {rejectWithValue} ) => {
     try{
         const response = await axios.get("http://localhost:5000/home");
