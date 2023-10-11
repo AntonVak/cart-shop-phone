@@ -20,6 +20,7 @@ const cartSlice = createSlice({
 
       if (itemId >= 0) {
         state.items[itemId].cartQuantity += 1;
+
         toast.info("quantity +1", {
           position: "bottom-right",
           autoClose: 1000,
@@ -28,6 +29,7 @@ const cartSlice = createSlice({
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.items.push(tempProduct);
+        
         toast.success("added to cart", {
           position: "bottom-right",
           autoClose: 1000,
