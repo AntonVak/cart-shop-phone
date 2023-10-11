@@ -3,19 +3,18 @@ import { useGetAllProductsQuery } from "../../store/productsApi";
 import { styles } from "./CartGlobalStyle";
 
 const CartTable = () => {
-  const { data, error, isLoading } = useGetAllProductsQuery();
+  const { error, isLoading } = useGetAllProductsQuery();
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
   if (error) {
     return <div>Error loading products</div>;
   }
-  console.log("data :>> ", data);
-
+  
   return (
-    <TableHead>
+    <>
+<TableHead>
       <TableRow sx={styles.row}>
         <TableCell sx={styles.headFirstCell}>Product</TableCell>
         <TableCell sx={styles.headCell}>Price</TableCell>
@@ -23,6 +22,8 @@ const CartTable = () => {
         <TableCell sx={styles.headCell}>Total</TableCell>
       </TableRow>
     </TableHead>
+    </>
+    
   );
 };
 

@@ -1,5 +1,6 @@
 // import { useCart } from "../../hooks/useCart";
 import { Table, TableContainer } from "@mui/material";
+import CartItems from "./CartItems";
 import CartTable from "./CartTable";
 
 const Cart = () => {
@@ -10,6 +11,7 @@ const Cart = () => {
           <CartTable />
         </Table>
       </TableContainer>
+      <CartItems/>
     </>
   );
 };
