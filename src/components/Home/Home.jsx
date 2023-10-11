@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { addItem } from "../../store/cartSlice";
+import { addItem } from "../../store/cart/cartSlice";
 import { useGetAllProductsQuery } from "../../store/productsApi";
 import { styles } from "./HomeStyle";
 
