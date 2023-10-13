@@ -1,17 +1,21 @@
-// import { useCart } from "../../hooks/useCart";
-import { Table, TableContainer } from "@mui/material";
+import { useCart } from "../../hooks/useCart";
+import CartFooter from "./CartFooter";
+
 import CartItems from "./CartItems";
 import CartTable from "./CartTable";
 
 const Cart = () => {
+  const { items } = useCart();
+  console.log(items);
   return (
     <>
-      <TableContainer>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <CartTable />
-        </Table>
-      </TableContainer>
-      <CartItems/>
+      {items.length === 0 ? <p>Yors Cart Empty</p> : <CartTable />}
+      {items.map((item) => (
+        <div key={item.id}>
+          <CartItems item={item} />
+        </div>
+      ))}
+      <CartFooter items/>
     </>
   );
 };
