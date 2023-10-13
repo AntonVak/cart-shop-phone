@@ -1,4 +1,9 @@
-import { TableCell, TableHead, TableRow } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { useGetAllProductsQuery } from "../../store/productsApi";
 import { styles } from "./CartGlobalStyle";
 
@@ -11,19 +16,26 @@ const CartTable = () => {
   if (error) {
     return <div>Error loading products</div>;
   }
-  
+
   return (
-    <>
-<TableHead>
-      <TableRow sx={styles.row}>
-        <TableCell sx={styles.headFirstCell}>Product</TableCell>
-        <TableCell sx={styles.headCell}>Price</TableCell>
-        <TableCell sx={styles.headCell}>Quantity</TableCell>
-        <TableCell sx={styles.headCell}>Total</TableCell>
-      </TableRow>
-    </TableHead>
-    </>
-    
+    <Box component="div" sx={{mt:5}}>
+     <Grid container sx={styles.row}>
+        <Grid xs={6}>
+          <Typography sx={styles.headFirstCell}>Product</Typography>
+        </Grid>
+        <Grid xs={2}>
+          <Typography sx={styles.headCell}>Price</Typography>
+        </Grid>
+        <Grid xs={2}>
+          <Typography sx={styles.headCell}>Quantity</Typography>
+        </Grid>
+        <Grid xs={2}>
+          <Typography sx={styles.headCell}>Total</Typography>
+        </Grid>
+      </Grid>
+      <Divider sx={{mt:2, color: '#'}}/>
+      <Divider orientation="vertical"  />
+    </Box>
   );
 };
 
