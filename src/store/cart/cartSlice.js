@@ -29,7 +29,7 @@ const cartSlice = createSlice({
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.items.push(tempProduct);
-        
+
         toast.success("added to cart", {
           position: "bottom-right",
           autoClose: 1000,
@@ -37,8 +37,18 @@ const cartSlice = createSlice({
       }
       localStorage.setItem("cartItems", JSON.stringify(state.items));
     },
+    removeFromCart: (state, action) => {
+      state.items = state.items.filter((item) => item.id !== action.payload);
+
+      localStorage.setItem("cartItems", JSON.stringify(state.items));
+
+      toast.error("removed from cart", {
+        position: "bottom-left",
+        autoClose: 1000,
+      });
+    },
   },
 });
 
-export const { addItem } = cartSlice.actions;
+export const { addItem, removeFromCart } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;
