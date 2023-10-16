@@ -2,13 +2,21 @@ import { Box, Button, Typography } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { LinkStyle, styles } from "./CartFooterStyle";
 import { useCart } from "../../hooks/useCart";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../store/cart/cartSlice";
 
 const CartFooter = () => {
-   const {totalPrice, totalQuantity} = useCart();
+  const { totalPrice } = useCart();
+  const dispatchFunc = useDispatch();
+
+const handleClearCart = () => { 
+    dispatchFunc(clearCart());
+ }
+   
   return (
     <Box sx={styles.footerWr}>
       <div>
-        <Button sx={styles.btnClear} variant="outlined">
+        <Button onClick={handleClearCart} sx={styles.btnClear} variant="outlined">
           Clear Cart
         </Button>
       </div>
@@ -30,7 +38,9 @@ const CartFooter = () => {
         <Box sx={styles.continiuShopping}>
           <LinkStyle to="/home">
             <ArrowRightAltIcon sx={styles.arrow} />
-            <Typography component="span" sx={styles.span}>Continue Shopping</Typography>
+            <Typography component="span" sx={styles.span}>
+              Continue Shopping
+            </Typography>
           </LinkStyle>
         </Box>
       </Box>
