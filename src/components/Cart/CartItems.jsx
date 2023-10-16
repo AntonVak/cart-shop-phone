@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../store/cart/cartSlice";
 
 const CartItems = ({ item }) => {
-  const { id, name, desc, price, image } = item;
+  const { id, name, desc, price, image, cartQuantity } = item;
 
   const dispatchFunc = useDispatch();
 
@@ -38,7 +38,7 @@ const CartItems = ({ item }) => {
         <Typography component="div" sx={styles.price}>
           ${price}
         </Typography>
-        <CartQuantity />
+        <CartQuantity id={id} cartQuantity={cartQuantity} />
         <Typography component="div">Total</Typography>
       </Box>
     </Card>

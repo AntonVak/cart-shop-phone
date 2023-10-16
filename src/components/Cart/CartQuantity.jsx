@@ -1,30 +1,27 @@
-// import { useDispatch } from "react-redux";
-// import { decrement, increment } from "../../store/cart/cartSlice";
-
+import { useDispatch } from "react-redux";
 import { Box, Button } from "@mui/material";
-import { useCart } from "../../hooks/useCart";
+import { decrement, incriment } from "../../store/cart/cartSlice";
 
+const CartQuantity = ({id, cartQuantity}) => {
+  
+  const dispatchFunc = useDispatch();
 
-const CartQuantity = () => {
-  const {totalQuantity} = useCart();
-  // const funcDispatch = useDispatch();
-
-  // const handleIncrease = () => {
-  //   funcDispatch(increment(id));
+  const handleIncrease = () => {
+    dispatchFunc(incriment(id));
    
-  // };
-  // const handleDecrease = () => {
-  //   funcDispatch(decrement(id));
+  };
+  const handleDecrease = () => {
+    dispatchFunc(decrement(id));
    
-  // };
+  };
 
   return (
     <Box sx={{  p: 2, display: "flex" }} >
-      <Button sx={{ justifyContent: "center", alignItems: "center" }} >
+      <Button onClick={handleDecrease} sx={{ justifyContent: "center", alignItems: "center" }} >
         -
       </Button>
-      <p>{totalQuantity}</p>
-      <Button >
+      <p>{cartQuantity}</p>
+      <Button onClick={handleIncrease} >
         +
       </Button>
     </Box>
