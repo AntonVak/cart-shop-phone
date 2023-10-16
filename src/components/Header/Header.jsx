@@ -9,12 +9,11 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { ShoppingCart } from "@mui/icons-material";
 import { StyledLink, StyledSpan, styles } from "./HeaderStyle";
-import { green } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box >
       <AppBar position="static" sx={styles.header}>
         <Toolbar sx={styles.toolbar}>
           <IconButton
@@ -22,7 +21,7 @@ const Header = () => {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={styles.icon}
           >
             <MenuIcon />
           </IconButton>
@@ -34,13 +33,14 @@ const Header = () => {
             <StyledLink to={"/cart"}>Cart</StyledLink>
           </Typography>
           <Typography component="div" sx={styles.cartIcon} >
-            <Link to={"/cart"}>
-              <ShoppingCart sx={{ ml: 5, color: green[600] }} />
-              <StyledSpan>2</StyledSpan>
+            <Link to={"/cart"} sx={styles.linkIconCart}>
+              <ShoppingCart sx={styles.cart} />
+              
             </Link>
+            <StyledSpan>2</StyledSpan>
           </Typography>
 
-          <Button color="inherit">Login</Button>
+          <Button sx={styles.btnLogin}>Login</Button>
         </Toolbar>
       </AppBar>
     </Box>

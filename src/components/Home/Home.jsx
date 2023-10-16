@@ -27,14 +27,14 @@ const Home = () => {
         <p>An error</p>
       ) : (
         <>
-          <Typography variant="h3" component="h1" align="center">
+          <Typography variant="h5" component="h1" align="center" sx={{fontWeight:'600'}}>
             New arriwals
           </Typography>
 
-          <Box sx={styles.wrap}>
+          <Box component="section"  sx={styles.wrap}>
             {data?.map((product) => (
               <Card sx={styles.card} key={product.id}>
-                <Typography variant="h6" component="h2" align="center">
+                <Typography variant="h5" component="h2" sx={styles.title}>
                   {product.name}
                 </Typography>
                 <CardMedia
@@ -43,7 +43,7 @@ const Home = () => {
                   src={product.image}
                   alt={product.name}
                 />
-                <CardContent>
+                <CardContent sx={styles.cardContent}>
                   <span>{product.desc}</span>
                   <Typography component="div" sx={styles.price}>
                     ${product.price}

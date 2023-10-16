@@ -16,7 +16,11 @@ const theme = createTheme({
     palette: {
       background: {
         headerRow: '#BEB7A4',
-      }
+      },
+      color: {
+        main: '#0052cc',
+        text: '#f9dc5c',
+      },
     },
     status: {
       warning: '#FF1B1C',
@@ -28,7 +32,7 @@ const theme = createTheme({
           
           
         ].join(','),
-        fontSize: 30,
+        fontSize: 16,
         fontWeight: 600,
         
       },
