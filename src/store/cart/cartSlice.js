@@ -47,8 +47,46 @@ const cartSlice = createSlice({
         autoClose: 1000,
       });
     },
+    incriment: (state, action) => {
+      state.items = state.items.map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, cartQuantity: item.cartQuantity + 1 };
+        } else {
+          return item;
+        }
+      });
+    },
+    decrement: (state, action) => {
+      const itemId = action.payload;
+      const itemIndex = state.items.findIndex((item) => item.id === itemId);
+      // console.log(itemId);
+      console.log(itemIndex);
+      if (itemIndex !== -1) {
+        if (state.items[itemIndex].cartQuantity > 1) {
+          // Если количество больше 1, уменьшаем на 1
+          state.items[itemIndex].cartQuantity -= 1;
+        } else {
+          // Если количество 1, удаляем позицию из корзины
+          state.items.splice(itemIndex, 1);
+        }
+      }
+      // state.items = state.items.map((item) => {
+      //   if (item.id === action.payload) {
+      //     return { ...item, cartQuantity: item.cartQuantity - 1 };
+      //   } else {
+      //     return item;
+      //   }
+      // });
+    },
+    clearCart: (state) => {
+      state.items = [];
+    },
+    setTotalPrice: (state, action) => {
+      state.totalPrice = action.payload;
+    }
+
   },
 });
 
-export const { addItem, removeFromCart } = cartSlice.actions;
+export const { addItem, removeFromCart, incriment, decrement, clearCart, setTotalPrice } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;
