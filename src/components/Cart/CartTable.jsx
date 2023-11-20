@@ -20,7 +20,7 @@ const CartTable = () => {
   return (
     <Box component="div" sx={{mt:5}}>
      <Grid container sx={styles.row}>
-        <Grid xs={6}>
+        <Grid xs={{lg:'6', sm: '2'}}>
           <Typography sx={styles.headFirstCell}>Product</Typography>
         </Grid>
         <Grid xs={2}>
